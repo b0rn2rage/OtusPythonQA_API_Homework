@@ -12,7 +12,6 @@ class DogApi:
         self.url = url
 
     def get_endpoint(self, url, function_name, **kwargs):
-        print(kwargs)
         function_mapping = self.FUNCTION_MAPPING[function_name]
         for k, v in kwargs.items():
             function_mapping = self.FUNCTION_MAPPING[function_name].replace('{' + k + '}', v)

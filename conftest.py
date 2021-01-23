@@ -3,6 +3,7 @@ import configparser
 from pathlib import Path
 from dog_api.dog_api import DogApi
 from openbrewerydb_api.openbrewerydb_api import OpenBreweryDbApi
+from json_placeholder_api.json_placeholder_api import JsonPlaceholderApi
 
 
 @pytest.fixture(scope="session")
@@ -21,4 +22,10 @@ def dog_api_obj(cfg):
 @pytest.fixture(scope="class")
 def open_brewery_db_obj(cfg):
     api = OpenBreweryDbApi(cfg["open_brewery_db"]["hostname"])
+    return api
+
+
+@pytest.fixture(scope="class")
+def json_placeholder_obj(cfg):
+    api = JsonPlaceholderApi(cfg["json_placeholder"]["hostname"])
     return api
