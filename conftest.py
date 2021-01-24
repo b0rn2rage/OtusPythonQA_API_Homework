@@ -29,3 +29,23 @@ def open_brewery_db_obj(cfg):
 def json_placeholder_obj(cfg):
     api = JsonPlaceholderApi(cfg["json_placeholder"]["hostname"])
     return api
+
+
+def pytest_addoption(parser):
+    parser.addoption('--url',
+                     default='https://ya.ru/',
+                     required=False)
+
+    parser.addoption('--status_code',
+                     default="200",
+                     required=False)
+
+
+@pytest.fixture
+def url(request):
+    return request.config.getoption('--url')
+
+
+@pytest.fixture
+def my_status_code(request):
+    return request.config.getoption('--status_code')
